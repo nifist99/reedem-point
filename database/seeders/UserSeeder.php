@@ -18,21 +18,23 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'cms_role_id' => 1,
-                'name'  =>'superadmin',
-                'email'=>'superadmin@nfs.com',
-                'phone'=>'088220148340',
-                'status'=>'active',
-                'password'=>Hash::make('123456')
+                'cms_role_id'    => 1,
+                'id'             => (string) Str::uuid(),
+                'name'           => 'superadmin',
+                'email'          => 'superadmin@nfs.com',
+                'phone'          => '088220148340',
+                'status'         => 'active',
+                'password'       => Hash::make('123456')
             ],
 
             [
-                'cms_role_id' => 2,
-                'name'  =>'admin',
-                'email'=>'admin@nfs.com',
-                'phone'=>'082238982100',
-                'status'=>'active',
-                'password'=>Hash::make('123456')
+                'cms_role_id'    => 2,
+                'id'             => (string) Str::uuid(),
+                'name'           =>'admin',
+                'email'          =>'admin@nfs.com',
+                'phone'          =>'082238982100',
+                'status'         =>'active',
+                'password'       =>Hash::make('123456')
             ],
 
 

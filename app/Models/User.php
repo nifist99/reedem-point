@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Support\Str;
 use Hash;
 
@@ -20,13 +20,31 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'name',
         'email',
         'password',
         'phone',
         'status',
+        'referal',
+        'kunci',
         'cms_role_id'
     ];
+
+    public function getIncrementing()
+    {
+        return false;
+    }
+
+    /**
+     * Get the auto-incrementing key type.
+     *
+     * @return string
+     */
+    public function getKeyType()
+    {
+        return 'string';
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -50,6 +68,7 @@ class User extends Authenticatable
     public static function save_data($request){
 
         $save = User::insert([
+            "id"            => (string) Str::uuid(),
             "name"          =>$request->name,
             "email"         =>$request->email,
             "phone"         =>$request->phone,

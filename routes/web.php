@@ -21,8 +21,6 @@ use App\Http\Controllers\Cms\CmsDocumentController;
 use App\Http\Controllers\Cms\CmsManagementUsersController;
 
 // MANAGEMENT CLASS
-use App\Http\Controllers\Microservice\LinkedinController;
-use App\Http\Controllers\Microservice\InstagramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,38 +40,6 @@ Route::middleware(['web'])->group(function () {
         Route::get("password",[CmsManagementUsersController::class,"password"]);
         Route::post("account/update",[CmsManagementUsersController::class,"account_update"]);
         Route::post("password/update",[CmsManagementUsersController::class,"password_update"]);
-
-        //URL AUTO GENERATE
-
-        Route::get("linkedin/{menu_detail}",[LinkedinController::class,"index"]);
-
-        Route::get("linkedin/create/{menu_detail}",[LinkedinController::class,"create"]);
-
-        Route::get("linkedin/edit/{menu_detail}/{id}",[LinkedinController::class,"edit"]);
-
-        Route::get("linkedin/show/{menu_detail}/{id}",[LinkedinController::class,"show"]);
-
-        Route::post("linkedin/store",[LinkedinController::class,"store"]);
-
-        Route::post("linkedin/update",[LinkedinController::class,"update"]);
-
-        Route::get("linkedin/destroy/{menu_detail}/{id}",[LinkedinController::class,"destroy"]);
-
-
-        Route::get("instagram/{menu_detail}",[InstagramController::class,"index"]);
-
-        Route::get("instagram/create/{menu_detail}",[InstagramController::class,"create"]);
-
-        Route::get("instagram/edit/{menu_detail}/{id}",[InstagramController::class,"edit"]);
-
-        Route::get("instagram/show/{menu_detail}/{id}",[InstagramController::class,"show"]);
-
-        Route::post("instagram/store",[InstagramController::class,"store"]);
-
-        Route::post("instagram/update",[InstagramController::class,"update"]);
-
-        Route::get("instagram/destroy/{menu_detail}/{id}",[InstagramController::class,"destroy"]);
-
     });
 
 });
