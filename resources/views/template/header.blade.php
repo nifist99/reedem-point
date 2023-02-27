@@ -8,10 +8,10 @@
     </div>
     <div>
       <a class="navbar-brand brand-logo" href="index.html">
-        <img src="{{url('assets/images/avatar.png')}}" width="100%" alt="logo" />
+        <img src="{{url('assets/images/logo.jpg')}}" width="100%" alt="logo" />
       </a>
       <a class="navbar-brand brand-logo-mini" href="index.html">
-        <img src="{{url('assets/images/avatar.png')}}" alt="logo" />
+        <img src="{{url('assets/images/logo.jpg')}}" alt="logo" />
       </a>
     </div>
   </div>
@@ -31,10 +31,10 @@
       </li>
       <li class="nav-item dropdown d-none d-lg-block user-dropdown">
         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-          <img class="img-xs rounded-circle" src="{{url('assets/images/avatar.png')}}" alt="Profile image"> </a>
+          <img class="img-xs rounded-circle" src="{{url('assets/images/logo.jpg')}}" alt="Profile image"> </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
           <div class="dropdown-header text-center">
-            <img class="img-md rounded-circle" src="{{url('assets/images/avatar.png')}}" width="50px" alt="Profile image">
+            <img class="img-md rounded-circle" src="{{url('assets/images/logo.jpg')}}" width="50px" alt="Profile image">
             <p class="mb-1 mt-3 font-weight-semibold">{{Session::get('name')}}</p>
             <p class="fw-light text-muted mb-0">{{Session::get('email')}}</p>
           </div>
