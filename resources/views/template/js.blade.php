@@ -1,40 +1,35 @@
- <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="{{url('assets/vendor/libs/jquery/jquery.js')}}"></script>
-    <script src="{{url('assets/vendor/libs/popper/popper.js')}}"></script>
-    <script src="{{url('assets/vendor/js/bootstrap.js')}}"></script>
-    <script src="{{url('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
+<!-- plugins:js -->
+    <script src="{{url('assets/vendors/js/vendor.bundle.base.js')}}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{{url('assets/vendors/chart.js/Chart.min.js')}}"></script>
+    <script src="{{url('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{url('assets/vendors/progressbar.js/progressbar.min.js')}}"></script>
 
-    <script src="{{url('assets/vendor/js/menu.js')}}"></script>
-    <!-- endbuild -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
-    <!-- Vendors JS -->
-    <script src="{{url('assets/vendor/libs/apex-charts/apexcharts.js')}}"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{{url('assets/js/off-canvas.js')}}"></script>
+    <script src="{{url('assets/js/hoverable-collapse.js')}}"></script>
+    <script src="{{url('assets/js/template.js')}}"></script>
+    <script src="{{url('assets/js/settings.js')}}"></script>
+    <script src="{{url('assets/js/todolist.js')}}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="{{url('assets/js/jquery.cookie.js')}}" type="text/javascript"></script>
+    <script src="{{url('assets/js/dashboard.js')}}"></script>
+    <script src="{{url('assets/js/Chart.roundedBarCharts.js')}}"></script>
+    <!-- End custom js for this page-->
 
-    <!-- Main JS -->
-    <script src="{{url('assets/js/main.js')}}"></script>
-    <script src="{{url('assets/vendor/sweetalert2/sweetalert2.min.js')}}"></script>
-
-    <!-- Page JS -->
-    <script src="{{url('assets/js/dashboards-analytics.js')}}"></script>
+    
+    <script src="{{url('assets/vendors/sweetalert2/sweetalert2.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-    <script src="{{url('assets/js/loadingoverlay.min.js')}}"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-
         {{-- socket io --}}
     <script src="https://cdn.socket.io/4.0.1/socket.io.min.js" 
         integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" 
         crossorigin="anonymous">
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-
     <script>
       $("#test").click(function(){
         $("div.spanner").addClass("show");

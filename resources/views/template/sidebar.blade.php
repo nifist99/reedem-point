@@ -1,30 +1,16 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-  <div class="app-brand demo">
-    <a href="{{url('dashboard')}}" class="app-brand-link">
-      <span class="app-brand-logo demo">
-        <img src="{{Nfs::content('logo')}}" alt="" width="40px">
-      </span>
-      <span class="app-brand-text demo menu-text fw-bolder ms-2">{{Nfs::content('app')}}</span>
-    </a>
-
-    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-      <i class="bx bx-chevron-left bx-sm align-middle"></i>
-    </a>
-  </div>
-
-  <div class="menu-inner-shadow"></div>
-
-  <ul class="menu-inner py-1">
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
 
       @auth
 
-        <!-- Dashboard -->
-      <li class="menu-item @if($link=='dashboard') active @endif">
-        <a href="{{url('dashboard')}}" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-home-circle"></i>
-          <div data-i18n="Analytics">Dashboard</div>
-        </a>
-      </li>
+        <li class="nav-item @if($link=='dashboard') active @endif">
+          <a class="nav-link" href="{{url('dashboard')}}">
+            <i class="mdi mdi-grid-large menu-icon"></i>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+
+        <li class="nav-item nav-category">Menu</li>
 
         {{-- SETTINGAN DARI CMS MENUS --}}
         @foreach (Nfs::menu(Session::get('id')) as $menu_access)
@@ -34,40 +20,37 @@
             @endphp
 
             @if(count($sub) == 0)
-          
-              <li class="menu-item @if($link==$menu_access->url) active @endif">
-                <a href="{{url($menu_access->url.'/'.Nfs::Encrypt($menu_access->cms_menus_id))}}" class="menu-link">
-                  <i class="menu-icon tf-icons bx {{$menu_access->icon}}"></i>
-                  <div data-i18n="Analytics">{{$menu_access->name}}</div>
-                </a>
-              </li>
-
+                <li class="nav-item @if($link==$menu_access->url) active @endif">
+                  <a class="nav-link" href="{{url($menu_access->url.'/'.Nfs::Encrypt($menu_access->cms_menus_id))}}" >
+                    <i class="menu-icon mdi {{$menu_access->icon}}"></i>
+                    <span class="menu-title">{{$menu_access->name}}</span>
+                  </a>
+                </li>
             @else
-
-            <li class="menu-item @if($link==$menu_access->url) open active @endif">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx {{$menu_access->icon}}"></i>
-                <div data-i18n="Account Settings">{{$menu_access->name}}</div>
-              </a>
-              <ul class="menu-sub">
-
-                @foreach($sub as $submenu)
-                  <li class="menu-item @if($link==$submenu->url) active @endif ">
-                    <a href="{{url($submenu->url.'/'.Nfs::Encrypt($submenu->cms_menus_id))}}" class="menu-link">
-                      <div data-i18n="{{$submenu->name}}">{{$submenu->name}}</div>
-                    </a>
-                  </li>
-                @endforeach
-
-              </ul>
-            </li>
-
+                <li class="nav-item @if($link==$menu_access->url) open active @endif">
+                  <a class="nav-link" data-bs-toggle="collapse" href="#{{$menu_access->url}}" aria-expanded="false" aria-controls="{{$menu_access->url}}">
+                    <i class="menu-icon mdi {{$menu_access->icon}}"></i>
+                    <span class="menu-title">{{$menu_access->name}}</span>
+                    <i class="menu-arrow"></i> 
+                  </a>
+                  <div class="collapse" id="{{$menu_access->url}}">
+                    <ul class="nav flex-column sub-menu">
+                      @foreach($sub as $submenu)
+                        <li class="nav-item @if($link==$submenu->url) active @endif"> 
+                          <a class="nav-link" href="{{url($submenu->url.'/'.Nfs::Encrypt($submenu->cms_menus_id))}}">
+                            {{$submenu->name}}
+                          </a>
+                        </li>
+                      @endforeach
+                    </ul>
+                  </div>
+                </li>
             @endif
             
         @endforeach
 
         {{-- account setting --}}
-
+{{-- 
         <li class="menu-item @if($link=='account' or $link=='password') open active @endif">
           <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-user"></i>
@@ -85,44 +68,44 @@
               </a>
             </li>
           </ul>
-        </li>
+        </li> --}}
 
       @endauth
 
       @if(Session::get('cms_role_id') ==1 or Session::get('cms_role_id') ==2 )
         @auth
         
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">Menu Admin</span></li>
+        <li class="nav-item nav-category">Menu Admin</li>
 
+        <li class="nav-item @if($link=='cms_role') active @endif">
+          <a class="nav-link" href="{{url('admin/role')}}">
+            <i class="mdi mdi-grid-large menu-icon"></i>
+            <span class="menu-title">Roles Management</span>
+          </a>
+        </li>
 
-          <li class="menu-item @if($link=='cms_role') active @endif">
-            <a href="{{url('admin/role')}}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-key"></i>
-              <div data-i18n="Analytics">Roles Management</div>
-            </a>
-          </li>
+        <li class="nav-item @if($link=='users') active @endif">
+          <a class="nav-link" href="{{url('admin/users')}}">
+            <i class="mdi mdi-grid-large menu-icon"></i>
+            <span class="menu-title">Users Management</span>
+          </a>
+        </li>
 
-          <li class="menu-item @if($link=='users') active @endif">
-            <a href="{{url('admin/users')}}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-user"></i>
-              <div data-i18n="Analytics">Users Management</div>
-            </a>
-          </li>
+        <li class="nav-item @if($link=='cms_settings') active @endif">
+          <a class="nav-link" href="{{url('admin/settings')}}">
+            <i class="mdi mdi-grid-large menu-icon"></i>
+            <span class="menu-title">Settings</span>
+          </a>
+        </li>
 
-          <li class="menu-item @if($link=='cms_settings') active @endif">
-            <a href="{{url('admin/settings')}}" class="menu-link">
-              <i class="menu-icon tf-icons bx bxs-cog"></i>
-              <div data-i18n="Analytics">Settings</div>
-            </a>
-          </li>
+        <li class="nav-item @if($link=='cms_logs') active @endif">
+          <a class="nav-link" href="{{url('admin/logs')}}">
+            <i class="mdi mdi-grid-large menu-icon"></i>
+            <span class="menu-title">Log Users Access</span>
+          </a>
+        </li>
+
           
-          <li class="menu-item @if($link=='cms_logs') active @endif">
-            <a href="{{url('admin/logs')}}" class="menu-link">
-              <i class="menu-icon tf-icons bx bxs-flag-alt"></i>
-              <div data-i18n="Analytics">Log Users Access</div>
-            </a>
-          </li>
-
         @endauth
       @endif
 
@@ -130,38 +113,39 @@
       @if(Session::get('cms_role_id') ==1)
         @auth
 
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">Menu Superadmin</span></li>
+        <li class="nav-item nav-category">Menu Superadmin</li>
 
-          <li class="menu-item @if($link=='cms_menus') active @endif">
-            <a href="{{url('admin/menus')}}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-book-content"></i>
-              <div data-i18n="Analytics">Menu Management</div>
-            </a>
-          </li>
+        <li class="nav-item @if($link=='cms_menus') active @endif">
+          <a class="nav-link" href="{{url('admin/menus')}}">
+            <i class="mdi mdi-grid-large menu-icon"></i>
+            <span class="menu-title">Menu Management</span>
+          </a>
+        </li>
 
-          <li class="menu-item @if($link=='cms_modules') active @endif">
-            <a href="{{url('admin/modules')}}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-code-alt"></i>
-              <div data-i18n="Analytics">Module Generator</div>
-            </a>
-          </li>
+        <li class="nav-item @if($link=='cms_modules') active @endif">
+          <a class="nav-link" href="{{url('admin/modules')}}">
+            <i class="mdi mdi-grid-large menu-icon"></i>
+            <span class="menu-title">Module Generator</span>
+          </a>
+        </li>
 
-          <li class="menu-item @if($link=='cms_emails') active @endif">
-            <a href="{{url('admin/emails')}}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-envelope"></i>
-              <div data-i18n="Analytics">Email Templates</div>
-            </a>
-          </li>
 
-          <li class="menu-item @if($link=='cms_document') active @endif">
-            <a href="{{url('admin/document')}}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-book-open"></i>
-              <div data-i18n="Analytics">Documentation</div>
-            </a>
-          </li>
+        <li class="nav-item @if($link=='cms_emails') active @endif">
+          <a class="nav-link" href="{{url('admin/emails')}}">
+            <i class="mdi mdi-grid-large menu-icon"></i>
+            <span class="menu-title">Email Templates</span>
+          </a>
+        </li>
+
+        <li class="nav-item @if($link=='cms_document') active @endif">
+          <a class="nav-link" href="{{url('admin/document')}}">
+            <i class="mdi mdi-grid-large menu-icon"></i>
+            <span class="menu-title">Documentation</span>
+          </a>
+        </li>
 
         @endauth
       @endif
 
     </ul>
-  </aside>
+  </nav>
