@@ -42,7 +42,7 @@
                   <div class="card-body">
                     <h4 class="card-title">{{$title}}</h4>
                     <div class="table-responsive">
-                      <table class="table table">
+                      <table class="table table" id="tabel">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -189,5 +189,23 @@
 
         </div>
     </div>
+
+@push('js')
+    <script>
+      $(document).ready( function () {
+        $('#tabel').DataTable({
+          "pageLength": 25,
+             searching: true,
+             ordering:  true,
+             paging: true,   
+             "order": [[1, 'desc']],
+             "columnDefs": [
+                { "type": "date", "targets": [1] }//date column formatted like "03/23/2018 10:25:13 AM".
+              ],     
+        });
+    });
+    </script>
+@endpush
+
 
 @endsection

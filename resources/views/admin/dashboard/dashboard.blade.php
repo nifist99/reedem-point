@@ -60,7 +60,7 @@
                   </div>
                 </div>
               </div>
-              <span class="fw-semibold d-block mb-1">Kandang</span>
+              <span class="fw-semibold d-block mb-1">test</span>
               <h4 class="card-title mb-2">1</h4>
             </div>
           </div>
@@ -93,7 +93,7 @@
                   </div>
                 </div>
               </div>
-              <span>Populasi</span>
+              <span>test</span>
               <h4 class="card-title text-nowrap mb-1">1</h4>
             </div>
           </div>
