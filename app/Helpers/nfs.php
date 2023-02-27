@@ -28,7 +28,7 @@ class Nfs {
     //default nama app
     public static function app(){
         
-        return "Whatspro.id";
+        return "BASE NFS V3";
     }
 
     public static function content($name){
