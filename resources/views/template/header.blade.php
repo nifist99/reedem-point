@@ -7,10 +7,10 @@
       </button>
     </div>
     <div>
-      <a class="navbar-brand brand-logo" href="index.html">
+      <a class="navbar-brand brand-logo" href="{{url('header')}}">
         <img src="{{url('assets/images/logo.jpg')}}" width="100%" alt="logo" />
       </a>
-      <a class="navbar-brand brand-logo-mini" href="index.html">
+      <a class="navbar-brand brand-logo-mini" href="{{url('header')}}">
         <img src="{{url('assets/images/logo.jpg')}}" alt="logo" />
       </a>
     </div>
