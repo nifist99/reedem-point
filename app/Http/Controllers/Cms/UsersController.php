@@ -90,6 +90,7 @@ class UsersController extends Controller
 
         $save = User::create(
             [
+                'id'         => (string) Str::uuid(),
                 'name'       =>$request->name,
                 'email'      =>$request->email,
                 'password'   =>Hash::make($request->password),
