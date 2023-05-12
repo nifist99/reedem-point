@@ -19,7 +19,7 @@
     <ul class="navbar-nav">
       <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
         <h1 class="welcome-text"><span class="text-black fw-bold">{{Session::get('name')}}</span></h1>
-        <h3 class="welcome-sub-text">google scraping, feeture whatspro.id </h3>
+        <h3 class="welcome-sub-text">reedem point </h3>
       </li>
     </ul>
     <ul class="navbar-nav ms-auto">
