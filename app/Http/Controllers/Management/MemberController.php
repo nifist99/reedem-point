@@ -75,17 +75,13 @@ class MemberController extends Controller
     {
         $request->validate([
             'name'               => 'required|string',
-            'phone'              => 'required|string',
+            'phone'              => 'required|unique:member,phone',
         ]);
 
-        $send = [
-            "name"      => $request->name,
-            "phone"     => $request->phone,
-        ];
 
-        $save = Member::insertData($send);
+        $save = Member::insertData($request);
 
-        if($save->status == 'success'){
+        if($save){
             return redirect()->back()->with('message','success save data')->with('message_type','primary');
         }else{
             return redirect()->back()->with('message','failed save data')->with('message_type','warning');
@@ -132,14 +128,9 @@ class MemberController extends Controller
             'phone'              => 'required|string',
         ]);
 
-        $send = [
-            "name"      => $request->name,
-            "phone"     => $request->phone,
-        ];
+        $save = Member::updateData($request);
 
-        $save = Member::updateData($send);
-
-        if($save->status == 'success'){
+        if($save){
             return redirect()->back()->with('message','success save data')->with('message_type','primary');
         }else{
             return redirect()->back()->with('message','failed save data')->with('message_type','warning');
@@ -156,7 +147,7 @@ class MemberController extends Controller
     {
         $delete = Member::deleteData($id);
 
-        if($delete->status == 'success'){
+        if($delete){
             return redirect()->back()->with('message','success delete data')->with('message_type','primary');
         }else{
             return redirect()->back()->with('message','failed delete data')->with('message_type','warning');

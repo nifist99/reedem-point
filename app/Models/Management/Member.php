@@ -19,6 +19,8 @@ class Member extends Model
         'id',
         'name',
         'phone',
+        'created_by',
+        'updated_by',
         'created_at',
         'updated_at',
     ];
@@ -65,6 +67,8 @@ class Member extends Model
             "id"        => Str::uuid(),
             "name"      => $request->name,
             "phone"     => $request->phone,
+            "created_by"=> Session::get('id'),
+            "updated_by"=> Session::get('id')
         ]);
         return $data;
     }
@@ -74,6 +78,7 @@ class Member extends Model
         $data = Member::where('id',$request->id)->update([
             "name"      => $request->name,
             "phone"     => $request->phone,
+            "updated_by"=> Session::get('id')
         ]);
         return $data;
     }

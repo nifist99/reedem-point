@@ -12,6 +12,13 @@
 
         <li class="nav-item nav-category">Menu</li>
 
+        <li class="nav-item @if($link=='member') active @endif">
+          <a class="nav-link" href="{{url('member')}}">
+            <i class="menu-icon mdi  mdi-android"></i>
+            <span class="menu-title">member</span>
+          </a>
+        </li>
+
         {{-- SETTINGAN DARI CMS MENUS --}}
         @foreach (Nfs::menu(Session::get('id')) as $menu_access)
 
