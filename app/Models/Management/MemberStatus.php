@@ -56,6 +56,12 @@ class MemberStatus extends Model
 
     public static function deleteData($id){
 
+        $check=MemberStatus::find($request->id);
+
+        if($check->image){
+            Storage::delete('public/'.$check->image);
+        }
+
         $data = MemberStatus::where('id',$id)->delete();
 
         return $data;

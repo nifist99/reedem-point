@@ -21,6 +21,10 @@ use App\Http\Controllers\Cms\CmsDocumentController;
 use App\Http\Controllers\Cms\CmsManagementUsersController;
 
 // MANAGEMENT CLASS
+use App\Http\Controllers\Management\MemberController;
+use App\Http\Controllers\Management\MemberStatusController;
+use App\Http\Controllers\Management\PointClaimController;
+use App\Http\Controllers\Management\PointReedemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +60,38 @@ Route::middleware(['web'])->group(function () {
         Route::get('test',[TetsController::class, 'index']);
 
         Route::post('logout',[AuthController::class, 'logout']);   
+
+        Route::get('member',[MemberController::class, 'index']);
+        Route::get('member/create',[MemberController::class, 'create']);
+        Route::get('member/show/{id}',[MemberController::class, 'show']);
+        Route::get('member/edit/{id}',[MemberController::class, 'edit']);
+        Route::get('member/destroy/{id}',[MemberController::class, 'destroy']);
+        Route::post('member/store',[MemberController::class, 'store']);
+        Route::post('member/update',[MemberController::class, 'update']);
+
+        Route::get('member_status',[MemberStatusController::class, 'index']);
+        Route::get('member_status/create',[MemberStatusController::class, 'create']);
+        Route::get('member_status/show/{id}',[MemberStatusController::class, 'show']);
+        Route::get('member_status/edit/{id}',[MemberStatusController::class, 'edit']);
+        Route::get('member_status/destroy/{id}',[MemberStatusController::class, 'destroy']);
+        Route::post('member_status/store',[MemberStatusController::class, 'store']);
+        Route::post('member_status/update',[MemberStatusController::class, 'update']);
+
+        Route::get('point_claim',[PointClaimController::class, 'index']);
+        Route::get('point_claim/create',[PointClaimController::class, 'create']);
+        Route::get('point_claim/show/{id}',[PointClaimController::class, 'show']);
+        Route::get('point_claim/edit/{id}',[PointClaimController::class, 'edit']);
+        Route::get('point_claim/destroy/{id}',[PointClaimController::class, 'destroy']);
+        Route::post('point_claim/store',[PointClaimController::class, 'store']);
+        Route::post('point_claim/update',[PointClaimController::class, 'update']);
+
+        Route::get('point_reedem',[PointReedemController::class, 'index']);
+        Route::get('point_reedem/create',[PointReedemController::class, 'create']);
+        Route::get('point_reedem/show/{id}',[PointReedemController::class, 'show']);
+        Route::get('point_reedem/edit/{id}',[PointReedemController::class, 'edit']);
+        Route::get('point_reedem/destroy/{id}',[PointReedemController::class, 'destroy']);
+        Route::post('point_reedem/store',[PointReedemController::class, 'store']);
+        Route::post('point_reedem/update',[PointReedemController::class, 'update']);
 
         Route::group(['prefix' => 'admin','middleware' => ['admin']], function () {
 
