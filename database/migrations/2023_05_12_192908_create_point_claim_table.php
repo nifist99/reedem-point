@@ -15,7 +15,7 @@ class CreatePointClaimTable extends Migration
     {
         Schema::create('point_claim', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('users_id');
+            $table->string('member_id');
             $table->integer('point');
             $table->date('date');
             $table->string('created_by');

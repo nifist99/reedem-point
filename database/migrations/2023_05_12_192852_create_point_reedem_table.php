@@ -15,7 +15,7 @@ class CreatePointReedemTable extends Migration
     {
         Schema::create('point_reedem', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('users_id');
+            $table->string('member_id');
             $table->integer('point');
             $table->date('date');
             $table->string('created_by');
