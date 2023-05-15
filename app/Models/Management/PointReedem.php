@@ -44,7 +44,8 @@ class PointReedem extends Model
     public static function listData(){
 
         $data = PointReedem::join('member','point_reedem.member_id','=','member.id')
-                ->select('point_reedem.*','member.name as member')
+                ->join('users','point_reedem.created_by','=','users.id')
+                ->select('point_reedem.*','member.name as member','users.name as users')
                 ->orderBy('point_reedem.created_at','desc')
                 ->get();
 
@@ -54,8 +55,9 @@ class PointReedem extends Model
     public static function detailData($id){
 
         $data = PointReedem::join('member','point_reedem.member_id','=','member.id')
+                ->join('users','point_reedem.created_by','=','users.id')
                 ->where('point_reedem.id',$id)
-                ->select('point_reedem.*','member.name as member')
+                ->select('point_reedem.*','member.name as member','users.name as users')
                 ->first();
 
         return $data;

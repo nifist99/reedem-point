@@ -44,7 +44,8 @@ class PointClaim extends Model
     public static function listData(){
 
         $data = PointClaim::join('member','point_claim.member_id','=','member.id')
-                ->select('point_claim.*','member.name as member')
+                ->join('users','point_claim.created_by','=','users.id')
+                ->select('point_claim.*','member.name as member', 'users.name as users')
                 ->orderBy('point_claim.created_at','desc')
                 ->get();
 
@@ -54,8 +55,9 @@ class PointClaim extends Model
     public static function detailData($id){
 
         $data = PointClaim::join('member','point_claim.member_id','=','member.id')
+                ->join('users','point_claim.created_by','=','users.id')
                 ->where('point_claim.id',$id)
-                ->select('point_claim.*','member.name as member')
+                ->select('point_claim.*','member.name as member', 'users.name as users')
                 ->first();
 
         return $data;
