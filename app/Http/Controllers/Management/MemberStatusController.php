@@ -111,7 +111,7 @@ class MemberStatusController extends Controller
     {
         $data        = Self::init();
         $data['row'] = MemberStatus::detailData($id);
-        return view('admin.management.member_status.detail',$data);
+        return view('admin.management.member_status.edit',$data);
     }
 
     /**
