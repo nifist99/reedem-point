@@ -50,6 +50,43 @@
     </div>
   </div>
 
+  <div class="row" style="margin-bottom: 30px">
+    <div class="col-sm-12">
+      <div class="overflow-auto">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">List Member</h4>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>member</th>
+                  <th>point</th>
+                  <th>date</th>
+                  <th>action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($row as $key)
+                <tr>
+                  <td>{{$key->member}}</td>
+                  <td>{{$key->point}}</td>
+                  <td>{{$key->date}}</td>
+                  <td>
+                      
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
 
 </div>
 

@@ -59,17 +59,17 @@
                   <td>{{$key->name}}</td>
                   <td>{{$key->phone}}</td>
                   <td>
-                    @if(Helper::statusMember($key->member_id)['image'])
-                    <a data-fslightbox="gallery" href="{{url('storage/'.Helper::statusMember($key->member_id)['image'])}}">
-                        <img src="{{url('storage/'.Helper::statusMember($key->member_id)['image'])}}" class="img-table" alt="{{$key->name}}">
+                    @if(Helper::statusMember($key->id)['image'])
+                    <a data-fslightbox="gallery" href="{{url('storage/'.Helper::statusMember($key->id)['image'])}}">
+                        <img src="{{url('storage/'.Helper::statusMember($key->id)['image'])}}" class="img-table" alt="{{$key->name}}">
                     </a>
                     @else
-                        <p>{{Helper::statusMember($key->member_id)['status']}}</p>
+                        <p>{{Helper::statusMember($key->id)['status']}}</p>
                     @endif
                 </td>
-                  <td>{{Helper::totalPoint($key->member_id)}}</td>
-                  <td>{{Helper::claimPoint($key->member_id)}}</td>
-                  <td>{{Helper::sisaPoint($key->member_id)}}</td>
+                  <td>{{Helper::totalPoint($key->id)}}</td>
+                  <td>{{Helper::claimPoint($key->id)}}</td>
+                  <td>{{Helper::sisaPoint($key->id)}}</td>
                   <td>
                     <a href="{{url('member/show/'.$key->id)}}" class="btn btn-sm btn-primary">detail</a>
                     <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#edit{{$key->id}}" class="btn btn-sm btn-warning">edit</a>

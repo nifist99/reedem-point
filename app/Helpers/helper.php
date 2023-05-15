@@ -16,7 +16,7 @@ use App\Models\Management\PointReedem;
 class Helper {
 
     public static function statusMember($member_id){
-        $point  = PointReedem::where('member_id',$member_id)->count();
+        $point  = PointReedem::where('member_id',$member_id)->sum('point');
 
         $status = MemberStatus::where('point','<=',$point)->first();
 
@@ -27,23 +27,23 @@ class Helper {
     }
 
     public static function totalPoint($member_id){
-        $point = PointReedem::where('member_id',$member_id)->count();
+        $point = PointReedem::where('member_id',$member_id)->sum('point');
 
         return $point;
     }
 
     public static function claimPoint($member_id){
 
-        $point = PointClaim::where('member_id',$member_id)->count();
+        $point = PointClaim::where('member_id',$member_id)->sum('point');
 
         return $point;
     }
 
     public static function sisaPoint($member_id){
 
-        $point = PointReedem::where('member_id',$member_id)->count();
+        $point = PointReedem::where('member_id',$member_id)->sum('point');
 
-        $claim = PointClaim::where('member_id',$member_id)->count();
+        $claim = PointClaim::where('member_id',$member_id)->sum('point');
 
         return $point - $claim;
     }
