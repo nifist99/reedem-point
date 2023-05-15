@@ -12,10 +12,31 @@
 
         <li class="nav-item nav-category">Menu</li>
 
+        <li class="nav-item @if($link=='point_reedem') active @endif">
+          <a class="nav-link" href="{{url('point_reedem')}}">
+            <i class="menu-icon mdi  mdi-android"></i>
+            <span class="menu-title">point reedem</span>
+          </a>
+        </li>
+
+        <li class="nav-item @if($link=='point_claim') active @endif">
+          <a class="nav-link" href="{{url('point_claim')}}">
+            <i class="menu-icon mdi  mdi-android"></i>
+            <span class="menu-title">point claim</span>
+          </a>
+        </li>
+
         <li class="nav-item @if($link=='member') active @endif">
           <a class="nav-link" href="{{url('member')}}">
             <i class="menu-icon mdi  mdi-android"></i>
             <span class="menu-title">member</span>
+          </a>
+        </li>
+
+        <li class="nav-item @if($link=='member_status') active @endif">
+          <a class="nav-link" href="{{url('status')}}">
+            <i class="menu-icon mdi  mdi-android"></i>
+            <span class="menu-title">member status</span>
           </a>
         </li>
 

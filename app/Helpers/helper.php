@@ -9,8 +9,33 @@ use Storage;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Nfs;
- 
+use App\Models\Management\Member;
+use App\Models\Management\MemberStatus;
+use App\Models\Management\PointClaim;
+use App\Models\Management\PointReedem;
 class Helper {
+
+    public static function totalPoint($member_id){
+        $point = PointReedem::where('member_id',$member_id)->count();
+
+        return $point;
+    }
+
+    public static function claimPoint($member_id){
+
+        $point = PointClaim::where('member_id',$member_id)->count();
+
+        return $point;
+    }
+
+    public static function sisaPoint($member_id){
+
+        $point = PointReedem::where('member_id',$member_id)->count();
+
+        $claim = PointClaim::where('member_id',$member_id)->count();
+
+        return $point - $claim;
+    }
 
     public static function resizeImage($file,$folder){
         $image              = $file;

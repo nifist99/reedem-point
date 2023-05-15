@@ -37,9 +37,20 @@ class PointReedemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public static function init(){
+
+        $data['title'] = 'point_reedem';
+        $data['link']  = 'point_reedem';
+
+        return $data;
+    }
+
     public function index()
     {
-        //
+        $data        = Self::init();
+        $data['row'] = PointReedem::listData();
+
+        return view('admin.management.point_reedem.index',$data);
     }
 
     /**
@@ -49,7 +60,8 @@ class PointReedemController extends Controller
      */
     public function create()
     {
-        //
+        $data               = Self::init();
+        return view('admin.management.point_reedem.create',$data);
     }
 
     /**
@@ -60,7 +72,20 @@ class PointReedemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'point'              => 'required',
+            'member_id'          => 'required',
+            'date'               => 'required|date',
+        ]);
+
+
+        $save = PointReedem::insertData($request);
+
+        if($save){
+            return redirect()->back()->with('message','success save data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed save data')->with('message_type','warning');
+        }
     }
 
     /**
@@ -71,7 +96,9 @@ class PointReedemController extends Controller
      */
     public function show($id)
     {
-        //
+        $data        = Self::init();
+        $data['row'] = PointReedem::detailData($id);
+        return view('admin.management.point_reedem.detail',$data);
     }
 
     /**
@@ -82,7 +109,9 @@ class PointReedemController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data        = Self::init();
+        $data['row'] = PointReedem::detailData($id);
+        return view('admin.management.point_reedem.edit',$data);
     }
 
     /**
@@ -92,9 +121,22 @@ class PointReedemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'point'              => 'required',
+            'member_id'          => 'required',
+            'date'               => 'required|date',
+        ]);
+
+
+        $save = PointReedem::updateData($request);
+
+        if($save){
+            return redirect()->back()->with('message','success update data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed update data')->with('message_type','warning');
+        }
     }
 
     /**
@@ -105,6 +147,12 @@ class PointReedemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = PointReedem::deleteData($id);
+
+        if($delete){
+            return redirect()->back()->with('message','success delete data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed delete data')->with('message_type','warning');
+        }
     }
 }

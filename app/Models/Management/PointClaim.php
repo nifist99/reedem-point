@@ -20,6 +20,8 @@ class PointClaim extends Model
         'member_id',
         'point',
         'date',
+        'created_by',
+        'updated_by',
         'created_at',
         'updated_at',
     ];
@@ -73,6 +75,8 @@ class PointClaim extends Model
             "member_id" => $request->member_id,
             "point"     => $request->point,
             "date"      => $request->date,
+            'created_by'=> Session::get('id'),
+            'updated_by'=> Session::get('id')
         ]);
         return $data;
     }
@@ -83,6 +87,7 @@ class PointClaim extends Model
             "member_id" => $request->member_id,
             "point"     => $request->point,
             "date"      => $request->date,
+            'updated_by'=> Session::get('id')
         ]);
         return $data;
     }

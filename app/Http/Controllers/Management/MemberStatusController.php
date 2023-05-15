@@ -132,9 +132,9 @@ class MemberStatusController extends Controller
         $save = MemberStatus::updateData($request);
 
         if($save){
-            return redirect()->back()->with('message','success save data')->with('message_type','primary');
+            return redirect()->back()->with('message','success update data')->with('message_type','primary');
         }else{
-            return redirect()->back()->with('message','failed save data')->with('message_type','warning');
+            return redirect()->back()->with('message','failed update data')->with('message_type','warning');
         }
     }
 

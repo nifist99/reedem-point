@@ -20,6 +20,8 @@ class PointReedem extends Model
         'member_id',
         'point',
         'date',
+        'created_by',
+        'updated_by',
         'created_at',
         'updated_at',
     ];
@@ -41,9 +43,9 @@ class PointReedem extends Model
 
     public static function listData(){
 
-        $data = PointReedem::join('member','point_claim.member_id','=','member.id')
-                ->select('point_claim.*','member.name as member')
-                ->orderBy('point_claim.created_at','desc')
+        $data = PointReedem::join('member','point_reedem.member_id','=','member.id')
+                ->select('point_reedem.*','member.name as member')
+                ->orderBy('point_reedem.created_at','desc')
                 ->get();
 
         return $data;
@@ -51,9 +53,9 @@ class PointReedem extends Model
 
     public static function detailData($id){
 
-        $data = PointReedem::join('member','point_claim.member_id','=','member.id')
-                ->where('point_claim.id',$id)
-                ->select('point_claim.*','member.name as member')
+        $data = PointReedem::join('member','point_reedem.member_id','=','member.id')
+                ->where('point_reedem.id',$id)
+                ->select('point_reedem.*','member.name as member')
                 ->first();
 
         return $data;
@@ -73,6 +75,8 @@ class PointReedem extends Model
             "member_id" => $request->member_id,
             "point"     => $request->point,
             "date"      => $request->date,
+            'created_by'=> Session::get('id'),
+            'updated_by'=> Session::get('id')
         ]);
         return $data;
     }
@@ -83,6 +87,7 @@ class PointReedem extends Model
             "member_id" => $request->member_id,
             "point"     => $request->point,
             "date"      => $request->date,
+            'updated_by'=> Session::get('id')
         ]);
         return $data;
     }
