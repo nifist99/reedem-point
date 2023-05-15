@@ -4,6 +4,31 @@ namespace App\Http\Controllers\Management;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+#PACKAGE
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
+use Ixudra\Curl\Facades\Curl;
+use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
+use Storage;
+use Validator;
+use Hash;
+#HELPER
+use Cron;
+use Date;
+use Fibonanci;
+use Helper;
+use Nfs;
+use Payments;
+use Wa;
+#MICROSERVICES
+use App\Models\Management\Member;
+use App\Models\Management\MemberStatus;
+use App\Models\Management\PointClaim;
+use App\Models\Management\PointReedem;
 
 class PointClaimController extends Controller
 {
