@@ -126,7 +126,6 @@ class MemberStatusController extends Controller
         $request->validate([
             'name'               => 'required|string',
             'point'              => 'required',
-            'image'              => 'required',
         ]);
 
         $save = MemberStatus::updateData($request);

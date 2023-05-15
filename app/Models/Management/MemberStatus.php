@@ -41,7 +41,7 @@ class MemberStatus extends Model
 
     public static function listData(){
 
-        $data = MemberStatus::orderBy('created_at','desc')->get();
+        $data = MemberStatus::orderBy('point','desc')->get();
 
         return $data;
     }
@@ -85,7 +85,7 @@ class MemberStatus extends Model
 
     public static function updateData($request){
         
-        $check=MemberStatus::find($request->id);
+            $check=MemberStatus::find($request->id);
 
             if($check->image){
 
@@ -93,12 +93,16 @@ class MemberStatus extends Model
                     // delete file before update
                     Storage::delete('public/'.$check->image);
 
-                    $data['image']=Helper::image($request->file('image'),'status');
+                    $image=Helper::image($request->file('image'),'status');
+                }else{
+                    $image = $check->image;
                 }
             }else{
                 if($request->file('image')){
 
-                    $data['image']=Helper::image($request->file('image'),'status');
+                    $image=Helper::image($request->file('image'),'status');
+                }else{
+                    $image = $check->image;
                 }
             }
 

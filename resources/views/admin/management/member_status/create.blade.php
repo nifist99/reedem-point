@@ -25,7 +25,7 @@
                   <div class="form-group">
 
                     <label for="image">{{Helper::uc('image')}}</label>
-                    <input type="text" class="form-control" id="image" name="image" placeholder="image" required>
+                    <input type="file" class="form-control" id="image" name="image" placeholder="image" required>
                   </div>
 
 
