@@ -15,6 +15,17 @@ use App\Models\Management\PointClaim;
 use App\Models\Management\PointReedem;
 class Helper {
 
+    public static function statusMember($member_id){
+        $point  = PointReedem::where('member_id',$member_id)->count();
+
+        $status = MemberStatus::where('point','<=',$point)->first();
+
+        return [
+            "status" => $status->name,
+            "image"  => $status->image
+        ];
+    }
+
     public static function totalPoint($member_id){
         $point = PointReedem::where('member_id',$member_id)->count();
 

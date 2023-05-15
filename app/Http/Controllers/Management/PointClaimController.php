@@ -49,6 +49,7 @@ class PointClaimController extends Controller
     {
         $data        = Self::init();
         $data['row'] = PointClaim::listData();
+        $data['member'] = Member::listData();
 
         return view('admin.management.point_claim.index',$data);
     }
@@ -61,6 +62,7 @@ class PointClaimController extends Controller
     public function create()
     {
         $data               = Self::init();
+        $data['member'] = Member::listData();
         return view('admin.management.point_claim.create',$data);
     }
 
@@ -98,6 +100,7 @@ class PointClaimController extends Controller
     {
         $data        = Self::init();
         $data['row'] = PointClaim::detailData($id);
+        $data['member'] = Member::listData();
         return view('admin.management.point_claim.detail',$data);
     }
 
@@ -111,6 +114,7 @@ class PointClaimController extends Controller
     {
         $data        = Self::init();
         $data['row'] = PointClaim::detailData($id);
+        $data['member'] = Member::listData();
         return view('admin.management.point_claim.edit',$data);
     }
 

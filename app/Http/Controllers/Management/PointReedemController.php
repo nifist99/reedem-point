@@ -47,8 +47,9 @@ class PointReedemController extends Controller
 
     public function index()
     {
-        $data        = Self::init();
-        $data['row'] = PointReedem::listData();
+        $data           = Self::init();
+        $data['row']    = PointReedem::listData();
+        $data['member'] = Member::listData();
 
         return view('admin.management.point_reedem.index',$data);
     }
@@ -61,6 +62,7 @@ class PointReedemController extends Controller
     public function create()
     {
         $data               = Self::init();
+        $data['member'] = Member::listData();
         return view('admin.management.point_reedem.create',$data);
     }
 
@@ -98,6 +100,7 @@ class PointReedemController extends Controller
     {
         $data        = Self::init();
         $data['row'] = PointReedem::detailData($id);
+        $data['member'] = Member::listData();
         return view('admin.management.point_reedem.detail',$data);
     }
 
@@ -111,6 +114,7 @@ class PointReedemController extends Controller
     {
         $data        = Self::init();
         $data['row'] = PointReedem::detailData($id);
+        $data['member'] = Member::listData();
         return view('admin.management.point_reedem.edit',$data);
     }
 

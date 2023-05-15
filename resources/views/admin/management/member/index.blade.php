@@ -58,6 +58,15 @@
                 <tr>
                   <td>{{$key->name}}</td>
                   <td>{{$key->phone}}</td>
+                  <td>
+                    @if(Helper::statusMember($key->member_id)['image'])
+                    <a data-fslightbox="gallery" href="{{url('storage/'.Helper::statusMember($key->member_id)['image'])}}">
+                        <img src="{{url('storage/'.Helper::statusMember($key->member_id)['image'])}}" class="img-table" alt="{{$key->name}}">
+                    </a>
+                    @else
+                        <p>{{Helper::statusMember($key->member_id)['status']}}</p>
+                    @endif
+                </td>
                   <td>{{Helper::totalPoint($key->member_id)}}</td>
                   <td>{{Helper::claimPoint($key->member_id)}}</td>
                   <td>{{Helper::sisaPoint($key->member_id)}}</td>
