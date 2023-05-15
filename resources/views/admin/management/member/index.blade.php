@@ -49,6 +49,7 @@
                   <th>status</th>
                   <th>point</th>
                   <th>point claim</th>
+                  <th>point sisa</th>
                   <th>action</th>
                 </tr>
               </thead>
@@ -57,9 +58,9 @@
                 <tr>
                   <td>{{$key->name}}</td>
                   <td>{{$key->phone}}</td>
-                  <td>{{$key->name}}</td>
-                  <td>{{$key->name}}</td>
-                  <td>{{$key->name}}</td>
+                  <td>{{Helper::totalPoint($key->member_id)}}</td>
+                  <td>{{Helper::claimPoint($key->member_id)}}</td>
+                  <td>{{Helper::sisaPoint($key->member_id)}}</td>
                   <td>
                     <a href="{{url('member/show/'.$key->id)}}" class="btn btn-sm btn-primary">detail</a>
                     <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#edit{{$key->id}}" class="btn btn-sm btn-warning">edit</a>
